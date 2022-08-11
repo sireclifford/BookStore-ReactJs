@@ -1,0 +1,159 @@
+.lesson-card {
+  background-color: #fff;
+  display: grid;
+  grid-template-columns: 400px 250px 324px;
+  padding: 20px 20px;
+  border: 1px solid #e7e7e7;
+  border-radius: 3px;
+}
+
+.update-progress-btn {
+  width: 11.5rem;
+  padding: 0.438rem 1.188rem 0.5rem 1.375rem;
+  border-radius: 3px;
+  background-color: #0290ff;
+  border: 1px solid #0290ff;
+  font-family: "RobotoSlab", serif;
+  font-size: 0.813rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  text-align: center;
+  color: #fff;
+}
+
+.lesson-genre {
+  margin: 0 2.438rem 0 0;
+  opacity: 0.5;
+  font-family: "Montserrat", serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #121212;
+}
+
+.lesson-title {
+  font-family: "RobotoSlab", serif;
+  font-size: 1.375rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.2px;
+  color: #121212;
+  margin: 0;
+}
+
+.lesson-author {
+  width: 6.688rem;
+  height: 1.188rem;
+  margin: 0.25rem 0 0;
+  font-family: "RobotoSlab", serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4386bf;
+}
+
+.lesson-actions ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  gap: 20px;
+}
+
+.lesson-actions li {
+  border-right: solid 1px #e8e8e8;
+  padding-right: 10px;
+  font-family: "RobotoSlab", serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #4386bf;
+}
+
+.lesson-actions li:last-child {
+  border-right: none;
+}
+
+.col-1 {
+  grid-column: 1 / span 1;
+}
+
+.col-2 {
+  grid-column: 2 / span 1;
+  display: flex;
+  gap: 10px;
+}
+
+.col-3 {
+  grid-column: 3 / span 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  padding-left: 50px;
+  border-left: 1px solid #e8e8e8;
+}
+
+.current-chapter {
+  margin: 0;
+  opacity: 0.5;
+  font-family: "RobotoSlab", sans-serif;
+  font-size: 0.813rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #121212;
+}
+
+.current-lesson {
+  font-family: "RobotoSlab", sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.4px;
+  color: #121212;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.lesson-progressBar {
+  align-self: center;
+}
+
+.lesson-progress-numb {
+  align-self: center;
+}
+
+.percentage {
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  font-weight: normal;
+  color: #121212;
+  margin: 0;
+}
+
+.percentage-complete {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  color: #121212;
+  margin: 0;
+}

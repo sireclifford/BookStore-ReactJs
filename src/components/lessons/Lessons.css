@@ -1,0 +1,17 @@
+.lessons-content {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-content: center;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.lessons {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  width: 100%;
+  max-width: 1024px;
+  margin-bottom: 60px;
+}
