@@ -1,7 +1,5 @@
 import React from 'react';
 import './LessonCard.css';
-import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 import PropTypes from 'prop-types';
 
 const LessonCard = (lesson = []) => {
@@ -27,12 +25,6 @@ const LessonCard = (lesson = []) => {
           </div>
         </div>
         <div className="col-2">
-          <div className="lesson-progressBar" style={{ width: 65, height: 65 }}>
-            <CircularProgressbar
-              value={lesson.lesson.percentage}
-              text={`${lesson.lesson.percentage}%`}
-            />
-          </div>
           <div className="lesson-progress-numb">
             <p className="percentage">
               {lesson.lesson.percentage}
