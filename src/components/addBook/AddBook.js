@@ -11,7 +11,11 @@ const AddBook = () => (
       </div>
       <Form className="add-book-form">
         <Form.Group className="title mb-3 mr-10" controlId="title">
-          <Form.Control className="inputTitle" type="text" placeholder="Book Title" />
+          <Form.Control
+            className="inputTitle"
+            type="text"
+            placeholder="Book Title"
+          />
         </Form.Group>
 
         <Form.Select aria-label="Category">

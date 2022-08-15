@@ -1,8 +1,8 @@
 import React from 'react';
 import './LessonCard.css';
+import PropTypes from 'prop-types';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import PropTypes from 'prop-types';
 
 const LessonCard = (lesson = []) => {
   LessonCard.prototype = {
