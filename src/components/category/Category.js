@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import swal from 'sweetalert';
-import { checkStatus } from '../../redux/status/status';
+import { checkStatus } from '../../redux/categories/categories';
 import './Category.css';
 
 const Category = () => {
@@ -11,7 +11,7 @@ const Category = () => {
 
   const handleStatus = () => {
     dispatch(checkStatus);
-    swal(`${state.status.status}`);
+    swal(`${state.categories.status}`);
   };
   return (
     <>
