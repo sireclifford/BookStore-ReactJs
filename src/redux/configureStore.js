@@ -3,11 +3,14 @@ import CategoriesReducer from './categories/categories';
 import BooksReducer from './books/books';
 
 // configure redux store
+
+const rootReducer = {
+  categories: CategoriesReducer,
+  books: BooksReducer,
+};
+
 const store = configureStore({
-  rootReducer: {
-    categories: CategoriesReducer,
-    books: BooksReducer,
-  },
+  reducer: rootReducer,
 });
 
 export default store;
