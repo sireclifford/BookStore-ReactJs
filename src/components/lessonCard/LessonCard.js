@@ -1,12 +1,22 @@
 import React from 'react';
-import './LessonCard.css';
+import swal from 'sweetalert';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { removeBook } from '../../redux/books/books';
+import './LessonCard.css';
 
 const LessonCard = (lesson = []) => {
   LessonCard.prototype = {
     lesson: PropTypes.object.isRequired,
+  };
+
+  const dispatch = useDispatch();
+
+  const deleteBook = () => {
+    dispatch(removeBook(lesson.lesson.id));
+    swal('Deleted', `"${lesson.lesson.title}" deleted successfully`, 'success');
   };
 
   return (
@@ -20,9 +30,25 @@ const LessonCard = (lesson = []) => {
           </div>
           <div className="lesson-actions">
             <ul>
-              <li>Comments</li>
-              <li>Remove</li>
-              <li>Edit</li>
+              <li>
+                <button type="button" className="btn-comment">
+                  Comment
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="btn-remove"
+                  onClick={deleteBook}
+                >
+                  Remove
+                </button>
+              </li>
+              <li>
+                <button type="button" className="btn-edit">
+                  Edit
+                </button>
+              </li>
             </ul>
           </div>
         </div>
