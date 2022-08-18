@@ -4,18 +4,19 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { removeBook } from '../../redux/books/books';
+import { deleteBook } from '../../features/book/bookSlice';
 import './LessonCard.css';
 
-const LessonCard = (lesson = []) => {
+const LessonCard = (lesson = {}) => {
   LessonCard.prototype = {
     lesson: PropTypes.object.isRequired,
+    key: PropTypes.string.isRequired,
   };
 
   const dispatch = useDispatch();
 
-  const deleteBook = () => {
-    dispatch(removeBook(lesson.lesson.id));
+  const removeBook = () => {
+    dispatch(deleteBook(lesson.lesson.id));
     swal('Deleted', `"${lesson.lesson.title}" deleted successfully`, 'success');
   };
 
@@ -24,7 +25,7 @@ const LessonCard = (lesson = []) => {
       <div className="lesson-card">
         <div className="col-1">
           <div className="lesson-info">
-            <h4 className="lesson-genre">{lesson.lesson.genre}</h4>
+            <h4 className="lesson-genre">{lesson.lesson.category}</h4>
             <h2 className="lesson-title">{lesson.lesson.title}</h2>
             <div className="lesson-author">{lesson.lesson.author}</div>
           </div>
@@ -39,7 +40,7 @@ const LessonCard = (lesson = []) => {
                 <button
                   type="button"
                   className="btn-remove"
-                  onClick={deleteBook}
+                  onClick={removeBook}
                 >
                   Remove
                 </button>
@@ -54,22 +55,16 @@ const LessonCard = (lesson = []) => {
         </div>
         <div className="col-2">
           <div className="lesson-progressBar" style={{ width: 65, height: 65 }}>
-            <CircularProgressbar
-              value={lesson.lesson.percentage}
-              text={`${lesson.lesson.percentage}%`}
-            />
+            <CircularProgressbar value="100" text="100" />
           </div>
           <div className="lesson-progress-numb">
-            <p className="percentage">
-              {lesson.lesson.percentage}
-              %
-            </p>
+            <p className="percentage">100 %</p>
             <p className="percentage-complete">Completed</p>
           </div>
         </div>
         <div className="col-3">
           <h4 className="current-chapter">CURRENT CHAPTER</h4>
-          <p className="current-lesson">{lesson.lesson.currentChapter}</p>
+          <p className="current-lesson">17</p>
           <button type="button" className="update-progress-btn">
             UPDATE PROGRESS
           </button>

@@ -1,45 +1,52 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import uuid from 'react-uuid';
 import swal from 'sweetalert';
-import { addBook } from '../../redux/books/books';
+import { createBook, fetchBooks, getBooksStatus } from '../../features/book/bookSlice';
 import './AddBook.css';
 
 const AddBook = () => {
   const dispatch = useDispatch();
+  const { status } = useSelector(getBooksStatus);
   const [book, setBook] = useState({
-    id: '',
+    item_id: '',
     title: '',
     author: '',
-    genre: 'Action',
-    percentage: 66,
+    category: 'Fiction',
+    percentage: 0,
     completed: false,
-    currentChapter: 'Chapter 17',
+    currentChapter: '',
   });
 
   const handleChange = (e) => {
     const { name } = e.target;
     setBook({
       ...book,
-      id: uuid(),
+      item_id: uuid(),
       [name]: e.target.value,
-      genre: 'Action',
+      category: 'Action',
       percentage: 66,
       completed: false,
       currentChapter: 'Chapter 17',
-
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addBook(book));
-    swal('Success', `"${book.title}" added Successfully`, 'success');
+    dispatch(createBook(book));
+    swal('Success', `"${book.title}" added Successfully`, 'success').then(() => {
+    });
     setBook({
       title: '',
       author: '',
     });
   };
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchBooks());
+    }
+  }, [status, dispatch]);
 
   return (
     <div className="add-book">
