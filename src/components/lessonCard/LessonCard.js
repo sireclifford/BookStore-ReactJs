@@ -16,7 +16,7 @@ const LessonCard = (lesson = {}) => {
   const dispatch = useDispatch();
 
   const removeBook = () => {
-    dispatch(deleteBook(lesson.lesson.id));
+    dispatch(deleteBook(lesson.lesson.item_id));
     swal('Deleted', `"${lesson.lesson.title}" deleted successfully`, 'success');
   };
 

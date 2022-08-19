@@ -26,7 +26,7 @@ export const reconstructBooks = (books) => {
   const containter = [];
   Object.keys(books).forEach((key) => {
     const book = { ...books[key][0] };
-    book.id = key;
+    book.item_id = key;
     containter.push(book);
   });
   return containter;
@@ -39,14 +39,6 @@ export const bookSlice = createSlice({
     addBook: {
       reducer(state, action) {
         state.books.push(action.payload);
-      },
-      prepare(title, author) {
-        return {
-          payload: {
-            title,
-            author,
-          },
-        };
       },
     },
     getAllBooks: {
@@ -82,7 +74,7 @@ export const bookSlice = createSlice({
       })
       .addCase(deleteBook.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.books = state.books.filter((book) => book.id !== action.meta.arg);
+        state.books = state.books.filter((book) => book.item_id !== action.meta.arg);
       })
       .addCase(deleteBook.rejected, (state, action) => {
         state.status = 'failed';
@@ -94,5 +86,8 @@ export const bookSlice = createSlice({
 export const getAllBooks = (state) => state.books;
 export const getBooksStatus = (state) => state.books;
 export const getBooksError = (state) => state.books.error;
+
+// actions
+export const { addBook } = bookSlice.actions;
 
 export default bookSlice.reducer;

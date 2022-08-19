@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
 import swal from 'sweetalert';
-import { createBook, fetchBooks, getBooksStatus } from '../../features/book/bookSlice';
+import { createBook, addBook } from '../../features/book/bookSlice';
 import './AddBook.css';
 
 const AddBook = () => {
   const dispatch = useDispatch();
-  const { status } = useSelector(getBooksStatus);
   const [book, setBook] = useState({
     item_id: '',
     title: '',
@@ -34,19 +33,13 @@ const AddBook = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createBook(book));
-    swal('Success', `"${book.title}" added Successfully`, 'success').then(() => {
-    });
+    dispatch(addBook(book));
+    swal('Success', `"${book.title}" added Successfully`, 'success');
     setBook({
       title: '',
       author: '',
     });
   };
-
-  useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchBooks());
-    }
-  }, [status, dispatch]);
 
   return (
     <div className="add-book">

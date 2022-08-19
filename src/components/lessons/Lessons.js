@@ -15,6 +15,7 @@ const Lessons = () => {
   const dispatch = useDispatch();
   const { books } = useSelector(getAllBooks);
   const { status } = useSelector(getBooksStatus);
+  // const { alert } = useSelector((state) => state.books);
 
   useEffect(() => {
     if (status === 'idle') {
@@ -28,7 +29,7 @@ const Lessons = () => {
     if (books.length === 0) {
       content = <Alert />;
     } else {
-      content = books.map((book) => <LessonCard key={book.id} lesson={book} />);
+      content = books.map((book) => <LessonCard key={book.item_id} lesson={book} />);
     }
   }
 
