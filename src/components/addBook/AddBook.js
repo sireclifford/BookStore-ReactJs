@@ -2,37 +2,37 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
 import swal from 'sweetalert';
-import { addBook } from '../../redux/books/books';
+import { createBook, addBook } from '../../features/book/bookSlice';
 import './AddBook.css';
 
 const AddBook = () => {
   const dispatch = useDispatch();
   const [book, setBook] = useState({
-    id: '',
+    item_id: '',
     title: '',
     author: '',
-    genre: 'Action',
-    percentage: 66,
+    category: 'Fiction',
+    percentage: 0,
     completed: false,
-    currentChapter: 'Chapter 17',
+    currentChapter: '',
   });
 
   const handleChange = (e) => {
     const { name } = e.target;
     setBook({
       ...book,
-      id: uuid(),
+      item_id: uuid(),
       [name]: e.target.value,
-      genre: 'Action',
+      category: 'Action',
       percentage: 66,
       completed: false,
       currentChapter: 'Chapter 17',
-
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(createBook(book));
     dispatch(addBook(book));
     swal('Success', `"${book.title}" added Successfully`, 'success');
     setBook({

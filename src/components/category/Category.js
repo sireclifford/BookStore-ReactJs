@@ -1,16 +1,15 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import swal from 'sweetalert';
-import { checkStatus } from '../../redux/categories/categories';
 import './Category.css';
 
 const Category = () => {
   const state = useSelector((state) => state);
   // const { status } = state;
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleStatus = () => {
-    dispatch(checkStatus);
+    // dispatch(checkStatus);
     swal(`${state.categories.status}`);
   };
   return (

@@ -1,21 +1,43 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import LessonCard from '../lessonCard/LessonCard';
+import Alert from '../alert/Alert';
 import AddBook from '../addBook/AddBook';
-
 import './Lessons.css';
+import {
+  getAllBooks,
+  getBooksStatus,
+  // getBooksError,
+  fetchBooks,
+} from '../../features/book/bookSlice';
 
 const Lessons = () => {
-  const state = useSelector((state) => state);
-  const { books } = state;
+  const dispatch = useDispatch();
+  const { books } = useSelector(getAllBooks);
+  const { status } = useSelector(getBooksStatus);
+  // const { alert } = useSelector((state) => state.books);
+
+  useEffect(() => {
+    if (status === 'idle') {
+      dispatch(fetchBooks());
+    }
+  }, [status, dispatch]);
+
+  let content;
+
+  if (status === 'succeeded') {
+    if (books.length === 0) {
+      content = <Alert />;
+    } else {
+      content = books.map((book) => <LessonCard key={book.item_id} lesson={book} />);
+    }
+  }
 
   return (
     <>
       <div className="lessons-content">
         <div className="lessons">
-          {books.map((lesson) => (
-            <LessonCard key={lesson.id} lesson={lesson} />
-          ))}
+          {content}
         </div>
       </div>
       <AddBook />
